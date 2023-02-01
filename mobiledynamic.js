@@ -1,53 +1,6 @@
-const onDeviceOrientation = (event) => {
-  const angles = {
-    alpha: roundAngle(event.alpha),
-    beta: roundAngle(event.beta),
-    gamma: roundAngle(event.gamma),
-    absolute: event.absolute,
-  };
-  if (
-    angles &&
-    typeof angles.alpha === "number" &&
-    typeof angles.beta === "number" &&
-    typeof angles.gamma === "number"
-  ) {
-    const a = angles.alpha > 180 ? angles.alpha - 360 : angles.alpha;
-    const b = angles.beta - 90;
-    const g = angles.gamma > 180 ? 360 - angles.gamma : -angles.gamma;
-    console.log(`rotateX(${b}deg) rotateY(${g}deg) rotateZ(${a}deg)`);
-    /*     setCssTransformInverse({
-        transform: `rotateX(${b}deg) rotateY(${g}deg) rotateZ(${a}deg)`,
-      }); */
-  }
-};
-
-const onClick = async () => {
-  const btn = document.querySelector("button");
-  console.log("BTN", btn);
+/* function onClick() {
   console.log("REQUEST PERMISSION");
-  if (DeviceOrientationEvent.requestPermission) {
-    debugger;
-    let permission;
-    try {
-      permission = await DeviceOrientationEvent.requestPermission();
-    } catch (err) {
-      console.log("ER", e);
-      const e = new Error((err && err.message) || "unknown error");
-      btn.innerText = "Enable permission: " + "error: " + e;
-      return false;
-    }
-    if (permission !== "granted") {
-      btn.style.backgroundColor = "red";
-      return false;
-    } else {
-      btn.style.backgroundColor = "green";
-    }
-    window.addEventListener("deviceorientation", onDeviceOrientation);
-
-    return true;
-  }
-  btn.style.backgroundColor = "green";
-  /*   if (typeof DeviceMotionEvent.requestPermission === "function") {
+  if (typeof DeviceMotionEvent.requestPermission === "function") {
     // Handle iOS 13+ devices.
     DeviceMotionEvent.requestPermission()
       .then((state) => {
@@ -60,9 +13,9 @@ const onClick = async () => {
       .catch(console.error);
   } else {
     // Handle regular non iOS 13+ devices.
- 
-  } */
-};
+    window.addEventListener("devicemotion", handleOrientation);
+  }
+} */
 
 window.addEventListener(
   "deviceorientation",
