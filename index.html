@@ -91,51 +91,50 @@
       />
     </div>
     <script type="text/javascript">
+      function onDeviceOrientation(event) {
+        const btn = document.querySelector("button");
+        btn.style.backgroundColor = "green";
+        btn.innerText = "enabled";
+        console.log("ON DEVICE OREINTATION");
+        console.log(`event`, event);
+        /*     setCssTransformInverse({
+        transform: `rotateX(${b}deg) rotateY(${g}deg) rotateZ(${a}deg)`,
+      }); */
+      }
+
       function requestOrientationPermission() {
         DeviceOrientationEvent.requestPermission();
       }
       const onClick = async () => {
-        const btn = document.querySelector("button");
+        window.addEventListener("deviceorientation", onDeviceOrientation, true);
+        /*      const btn = document.querySelector("button");
         console.log("BTN", btn);
-        console.log("REQUEST PERMISSION");
+        console.log(
+          "REQUEST PERMISSION",
+          DeviceOrientationEvent.requestPermission
+        );
 
-        if (DeviceOrientationEvent.requestPermission) {
-          debugger;
-          let permission;
-          try {
-            permission = await DeviceOrientationEvent.requestPermission();
-          } catch (err) {
-            console.log("ER", e);
-            const e = new Error((err && err.message) || "unknown error");
-            btn.innerText = "Enable permission: " + "error: " + e;
-            return false;
-          }
-          if (permission !== "granted") {
-            btn.style.backgroundColor = "red";
-            return false;
-          } else {
-            btn.style.backgroundColor = "green";
-          }
-          window.addEventListener("deviceorientation", onDeviceOrientation);
-
-          return true;
+        let permission;
+        try {
+          permission = await DeviceOrientationEvent.requestPermission();
+        } catch (err) {
+          const e = new Error((err && err.message) || "unknown error");
+          console.log("ER", e);
+          btn.innerText = "Enable permission: " + "error: " + e;
+          return false;
         }
-        btn.style.backgroundColor = "green";
-        /*   if (typeof DeviceMotionEvent.requestPermission === "function") {
-    // Handle iOS 13+ devices.
-    DeviceMotionEvent.requestPermission()
-      .then((state) => {
-        if (state === "granted") {
-          window.addEventListener("devicemotion", handleOrientation);
+        if (permission !== "granted") {
+          btn.style.backgroundColor = "red";
+          return false;
         } else {
-          console.error("Request to access the orientation was rejected");
+          btn.style.backgroundColor = "green";
         }
-      })
-      .catch(console.error);
-  } else {
-    // Handle regular non iOS 13+ devices.
- 
-  } */
+        window.addEventListener("deviceorientation", onDeviceOrientation, true);
+
+        return true;
+
+        btn.style.backgroundColor = "green";
+      }; */
       };
     </script>
     <button onclick="onClick();">Enable Permission</button>
