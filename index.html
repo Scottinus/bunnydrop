@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lunar Bunny</title>
+    <style>
+      body {
+        background: #1b1b1b;
+        overflow: hidden;
+        cursor: crosshair;
+      }
+      img {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%);
+      }
+      #layer1 {
+        z-index: 0;
+      }
+      #layer2 {
+        z-index: 1;
+      }
+
+      #layer3 {
+        z-index: 3;
+        border: 2px solid #1b1b1b;
+        border: 2px solid #1b1b1b;
+        box-shadow: #1b1b1b 1px 1px 1px inset;
+      }
+      #layer3 {
+        z-index: 4;
+        border: 2px solid #1b1b1b;
+        border: 2px solid #1b1b1b;
+        box-shadow: #1b1b1b 1px 1px 1px inset;
+      }
+      button {
+        position: absolute;
+        top: 15%;
+        width: 250px;
+        height: 80px;
+        z-index: 5;
+        left: 50%;
+        transform: translate(-50%);
+        border-radius: 8px;
+        background-color: #fff;
+        color: #1b1b1b;
+      }
+
+      #container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      #container > img {
+        transform: translate(-50%) perspective(50em) rotateY(0deg) rotateX(0deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img
+        id="layer1"
+        width="100%"
+        height="auto"
+        src="bunnydrop/bg3.png"
+        alt="Image 3"
+      />
+      <img
+        id="layer2"
+        width="100%"
+        height="auto"
+        src="./bunnydrop/char3.png"
+        alt="Image 1"
+      />
+      <!--   <div class="rest-frame frame-left"></div> -->
+      <img
+        id="layer4"
+        width="100%"
+        height="auto"
+        src="bunnydrop/shadowframe.png"
+        alt="Image 4"
+      />
+      <img
+        id="layer3"
+        width="100%"
+        height="auto"
+        src="bunnydrop/frame3.png"
+        alt="Image 3"
+      />
+    </div>
+    <script type="text/javascript">
+      function requestOrientationPermission() {
+        DeviceOrientationEvent.requestPermission();
+      }
+      const onClick = async () => {
+        console.log("REQUEST PERMISSION");
+        debugger;
+        if (DeviceOrientationEvent.requestPermission) {
+          debugger;
+          let permission;
+          try {
+            permission = await DeviceOrientationEvent.requestPermission();
+          } catch (err) {
+            console.log("ER", e);
+            const e = new Error((err && err.message) || "unknown error");
+            btn.innerText = "Enable permission: " + "error: " + e;
+            return false;
+          }
+          if (permission !== "granted") {
+            btn.style.backgroundColor = "red";
+            return false;
+          } else {
+            btn.style.backgroundColor = "green";
+          }
+          window.addEventListener("deviceorientation", onDeviceOrientation);
+
+          return true;
+        }
+        btn.style.backgroundColor = "green";
+        /*   if (typeof DeviceMotionEvent.requestPermission === "function") {
+    // Handle iOS 13+ devices.
+    DeviceMotionEvent.requestPermission()
+      .then((state) => {
+        if (state === "granted") {
+          window.addEventListener("devicemotion", handleOrientation);
+        } else {
+          console.error("Request to access the orientation was rejected");
+        }
+      })
+      .catch(console.error);
+  } else {
+    // Handle regular non iOS 13+ devices.
+ 
+  } */
+      };
+    </script>
+    <button onclick="onClick();">Enable Permission</button>
+
+    <script type="application/javascript" src="desktopdynamic.js"></script>
+    <script type="application/javascript" src="mobiledynamic.js"></script>
+  </body>
+</html>
