@@ -1,5 +1,3 @@
-const btn = document.querySelector("button");
-
 const onDeviceOrientation = (event) => {
   const angles = {
     alpha: roundAngle(event.alpha),
@@ -24,8 +22,9 @@ const onDeviceOrientation = (event) => {
 };
 
 const onClick = async () => {
+  const btn = document.querySelector("button");
+  console.log("BTN", btn);
   console.log("REQUEST PERMISSION");
-  debugger;
   if (DeviceOrientationEvent.requestPermission) {
     debugger;
     let permission;
