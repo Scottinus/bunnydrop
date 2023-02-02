@@ -6,6 +6,12 @@ var imgUrl = "";
 const cards = [...document.querySelectorAll(".card")];
 updateReflection(100, 0);
 
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
+
 window.addEventListener("mousemove", (event) => {
   let mouseX = event.clientX;
   let mouseY = event.clientY;
@@ -19,23 +25,23 @@ window.addEventListener("mousemove", (event) => {
     switch (index) {
       //frame
       case 3:
-        speed = 10;
+        speed = 4;
         break;
       //shadow frame
       case 2:
-        speed = 16;
+        speed = 6;
         break;
       //character
       case 1:
-        speed = 4;
+        speed = 2;
         break;
       //bg
       case 0:
-        speed = 4;
+        speed = 2;
         break;
     }
     card.style.transform = `rotateX(${ydeg * speed}deg) rotateY(${
-      xdeg * speed * 2
+      xdeg * speed
     }deg)`;
   });
 });
@@ -67,8 +73,8 @@ window.ondevicemotion = function (event) {
         speed = 4;
         break;
     }
-    card.style.transform = `rotateX(${ydeg * speed * 20}deg) rotateY(${
-      xdeg * speed * 20
+    card.style.transform = `rotateX(${ydeg * speed * 4}deg) rotateY(${
+      xdeg * speed * 4
     }deg)`;
   });
 };
