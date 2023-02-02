@@ -39,7 +39,7 @@ if (isMobile) {
     const ydeg = (initialY - currentY - halfHeight) / halfHeight;
     let customRotateX;
     let customRotateY;
-    updateReflection(ydeg * 180, xdeg * 100);
+    updateReflection(ydeg * 180 * 3, xdeg * 100 * 3);
     cards.forEach((card, index) => {
       switch (index) {
         //frame
@@ -83,7 +83,7 @@ if (isMobile) {
     let speed = 2;
     let customRotateX = ydeg * speed;
     let customRotateY = xdeg * speed;
-    updateReflection(ydeg * 180 * 3, xdeg * 100 * 3);
+    updateReflection(ydeg * 180, xdeg * 100);
     cards.forEach((card, index) => {
       switch (index) {
         //frame
