@@ -46,12 +46,54 @@ window.addEventListener("mousemove", (event) => {
   });
 });
 
-window.ondevicemotion = function (event) {
+let initialX;
+let initialY;
+let currentX;
+let currentY;
+
+window.addEventListener("touchstart", function (event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", function (event) {
+  currentX = event.touches[0].clientX;
+  currentY = event.touches[0].clientY;
+  let halfWidth = window.innerWidth / 2;
+  let halfHeight = window.innerHeight / 2;
+  const xdeg = (initialX - currentX - halfWidth) / halfWidth;
+  const ydeg = (initialY - currentY - halfHeight) / halfHeight;
+  cards.forEach((card, index) => {
+    switch (index) {
+      //frame
+      case 3:
+        speed = 8;
+        break;
+      //shadow frame
+      case 2:
+        speed = 10;
+        break;
+      //character
+      case 1:
+        speed = 4;
+        break;
+      //bg
+      case 0:
+        speed = 4;
+        break;
+    }
+    card.style.transform = `rotateX(${-ydeg * speed}deg) rotateY(${
+      xdeg * speed
+    }deg)`;
+  });
+});
+
+/* window.ondevicemotion = function (event) {
   var accelerationX = event.accelerationIncludingGravity.x.toFixed(2);
   var accelerationY = event.accelerationIncludingGravity.y.toFixed(2);
   var accelerationZ = event.accelerationIncludingGravity.z.toFixed(2);
-  let xdeg = accelerationX / 10;
-  let ydeg = accelerationY / 10;
+  let xdeg = accelerationX / 5;
+  let ydeg = accelerationY / 5;
   updateReflection(ydeg * 180 * 4, xdeg * 100);
   cards.forEach((card, index) => {
     switch (index) {
@@ -76,7 +118,7 @@ window.ondevicemotion = function (event) {
       xdeg * speed * 4
     }deg)`;
   });
-};
+}; */
 
 function updateReflection(degree, percentage) {
   cards.forEach((card, index) => {
