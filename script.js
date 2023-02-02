@@ -33,11 +33,11 @@ window.addEventListener("mousemove", (event) => {
         break;
       //character
       case 1:
-        speed = 2;
+        speed = 3;
         break;
       //bg
       case 0:
-        speed = 2;
+        speed = 3;
         break;
     }
     card.style.transform = `rotateX(${ydeg * speed}deg) rotateY(${
@@ -52,7 +52,7 @@ window.ondevicemotion = function (event) {
   var accelerationZ = event.accelerationIncludingGravity.z.toFixed(2);
   let xdeg = accelerationX / 10;
   let ydeg = accelerationY / 10;
-  updateReflection(ydeg * 180, xdeg * 100);
+  updateReflection(ydeg * 180 * 4, xdeg * 100);
   cards.forEach((card, index) => {
     switch (index) {
       //frame
@@ -81,7 +81,7 @@ window.ondevicemotion = function (event) {
 function updateReflection(degree, percentage) {
   cards.forEach((card, index) => {
     if (index === 3) {
-      card.style.background = `linear-gradient(${degree}deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) ${percentage}%,rgba(255,255,255,0) 100%), url('${""}')`;
+      card.style.background = `linear-gradient(${degree}deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) ${percentage}%,rgba(255,255,255,0) 100%), url('${""}')`;
       card.style.backgroundSize = "cover";
     }
   });
