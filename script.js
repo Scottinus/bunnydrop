@@ -50,19 +50,19 @@ if (isMobile) {
           break;
         //shadow frame
         case 2:
-          speed = 6;
-          customRotateX = -ydeg * speed;
-          customRotateY = xdeg * speed * 1.5;
+          speed = 8;
+          customRotateX = ydeg * speed;
+          customRotateY = -xdeg * speed * 1.5;
           break;
         //character
         case 1:
-          speed = 1;
+          speed = 2;
           customRotateX = ydeg * speed;
           customRotateY = -xdeg * speed * 1.5;
           break;
         //bg
         case 0:
-          speed = 2;
+          speed = 3;
           customRotateX = ydeg * speed * 1.5;
           customRotateY = -xdeg * speed * 1.5;
           break;
@@ -80,9 +80,9 @@ if (isMobile) {
 
       card.style.transform = `rotateX(${handleRange(
         customRotateX,
-        -6,
-        6
-      )}deg) rotateY(${handleRange(customRotateY, -6, 6)}deg)`;
+        -8,
+        8
+      )}deg) rotateY(${handleRange(customRotateY, -8, 8)}deg)`;
     });
   });
 } else {
