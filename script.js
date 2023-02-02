@@ -67,8 +67,8 @@ window.ondevicemotion = function (event) {
         speed = 4;
         break;
     }
-    card.style.transform = `rotateX(${ydeg * speed}deg) rotateY(${
-      xdeg * speed
+    card.style.transform = `rotateX(${ydeg * speed * 20}deg) rotateY(${
+      xdeg * speed * 20
     }deg)`;
   });
 };
