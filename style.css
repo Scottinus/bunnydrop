@@ -6,6 +6,7 @@ body {
   overflow: hidden;
   position: fixed;
   width: 100%;
+  background: red;
 }
 .card {
   height: 100%;
