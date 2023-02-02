@@ -47,10 +47,9 @@ window.addEventListener("mousemove", (event) => {
 });
 
 window.ondevicemotion = function (event) {
-  var accelerationX = event.accelerationIncludingGravity.x;
-  var accelerationY = event.accelerationIncludingGravity.y;
-  var accelerationZ = event.accelerationIncludingGravity.z;
-  // console.log(`${accelerationX},${accelerationY},${accelerationZ}`)
+  var accelerationX = parseInt(event.accelerationIncludingGravity.x);
+  var accelerationY = parseInt(event.accelerationIncludingGravity.y);
+  var accelerationZ = parseInt(event.accelerationIncludingGravity.z);
   let xdeg = accelerationX / 10;
   let ydeg = accelerationY / 10;
   updateReflection(ydeg * 180, xdeg * 100);
@@ -58,19 +57,19 @@ window.ondevicemotion = function (event) {
     switch (index) {
       //frame
       case 3:
-        speed = 10;
+        speed = 4;
         break;
       //shadow frame
       case 2:
-        speed = 16;
+        speed = 6;
         break;
       //character
       case 1:
-        speed = 4;
+        speed = 2;
         break;
       //bg
       case 0:
-        speed = 4;
+        speed = 2;
         break;
     }
     card.style.transform = `rotateX(${ydeg * speed * 4}deg) rotateY(${
