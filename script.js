@@ -46,14 +46,24 @@ window.addEventListener("mousemove", (event) => {
   });
 });
 
-window.ondevicemotion = function (event) {
-  var accelerationX = parseInt(event.accelerationIncludingGravity.x);
-  var accelerationY = parseInt(event.accelerationIncludingGravity.y);
-  var accelerationZ = parseInt(event.accelerationIncludingGravity.z);
+window.ondeviceorientation = function (event) {
+  var accelerationX = parseInt(event.beta);
+  var accelerationY = parseInt(event.gamma);
+  var alpha = event.alpha;
+  // alpha is the inclination on the z-axis
+
+  var beta = event.beta;
+  // beta is the inclination on the x-axis
+
+  var gamma = event.gamma;
+  // gamma is the inclination on the y-axis
+
+  console.log("ORIENTATION");
   let xdeg = accelerationX / 10;
   let ydeg = accelerationY / 10;
   updateReflection(ydeg * 180, xdeg * 100);
   cards.forEach((card, index) => {
+    let speed = 2;
     switch (index) {
       //frame
       case 3:
@@ -72,9 +82,13 @@ window.ondevicemotion = function (event) {
         speed = 2;
         break;
     }
-    card.style.transform = `rotateX(${ydeg * speed * 4}deg) rotateY(${
-      xdeg * speed * 4
-    }deg)`;
+    console.log("BETA", beta / (speed * 6));
+    card.style.transform = `translate(-50%) perspective(50em) rotateX(${(
+      beta /
+      (speed * 6)
+    ).toFixed(2)}deg) rotateY(${(gamma / (speed * 1.5)).toFixed(2)}deg)`;
+    card.style.left = `${50}%`;
+    card.style.top = `${0}%`;
   });
 };
 
