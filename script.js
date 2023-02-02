@@ -11,119 +11,115 @@ function isMobileDevice() {
     navigator.userAgent
   );
 }
+const isMobile = isMobileDevice();
+if (isMobile) {
+  console.log("IN MOBILE", isMobile);
+  let initialX;
+  let initialY;
+  let currentX;
+  let currentY;
 
-window.addEventListener("mousemove", (event) => {
-  let mouseX = event.clientX;
-  let mouseY = event.clientY;
-  let halfWidth = window.innerWidth / 2;
-  let halfHeight = window.innerHeight / 2;
-  let xdeg = (mouseX - halfWidth) / halfWidth;
-  let ydeg = (mouseY - halfHeight) / halfHeight;
-  let speed = 2;
-  updateReflection(ydeg * 180, xdeg * 100);
-  cards.forEach((card, index) => {
-    switch (index) {
-      //frame
-      case 3:
-        speed = 4;
-        break;
-      //shadow frame
-      case 2:
-        speed = 6;
-        break;
-      //character
-      case 1:
-        speed = 3;
-        break;
-      //bg
-      case 0:
-        speed = 3;
-        break;
-    }
-    card.style.transform = `rotateX(${ydeg * speed}deg) rotateY(${
-      xdeg * speed
-    }deg)`;
+  window.addEventListener("touchstart", function (event) {
+    initialX = event.touches[0].clientX;
+    initialY = event.touches[0].clientY;
   });
-});
-
-let initialX;
-let initialY;
-let currentX;
-let currentY;
-
-window.addEventListener("touchstart", function (event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-});
-
-window.addEventListener("touchmove", function (event) {
-  currentX = event.touches[0].clientX;
-  currentY = event.touches[0].clientY;
-  let halfWidth = window.innerWidth / 2;
-  let halfHeight = window.innerHeight / 2;
-  const xdeg = (initialX - currentX - halfWidth) / halfWidth;
-  const ydeg = (initialY - currentY - halfHeight) / halfHeight;
-  cards.forEach((card, index) => {
-    switch (index) {
-      //frame
-      case 3:
-        speed = 8;
-        break;
-      //shadow frame
-      case 2:
-        speed = 10;
-        break;
-      //character
-      case 1:
-        speed = 4;
-        break;
-      //bg
-      case 0:
-        speed = 4;
-        break;
-    }
-    card.style.transform = `rotateX(${-ydeg * speed}deg) rotateY(${
-      xdeg * speed
-    }deg)`;
+  window.addEventListener("touchend", function (event) {
+    updateReflection(180, 100);
+    cards.forEach((card, index) => {
+      card.style.transform = `rotateX(${0}deg) rotateY(${0}deg)`;
+    });
   });
-});
 
-/* window.ondevicemotion = function (event) {
-  var accelerationX = event.accelerationIncludingGravity.x.toFixed(2);
-  var accelerationY = event.accelerationIncludingGravity.y.toFixed(2);
-  var accelerationZ = event.accelerationIncludingGravity.z.toFixed(2);
-  let xdeg = accelerationX / 5;
-  let ydeg = accelerationY / 5;
-  updateReflection(ydeg * 180 * 4, xdeg * 100);
-  cards.forEach((card, index) => {
-    switch (index) {
-      //frame
-      case 3:
-        speed = 4;
-        break;
-      //shadow frame
-      case 2:
-        speed = 6;
-        break;
-      //character
-      case 1:
-        speed = 2;
-        break;
-      //bg
-      case 0:
-        speed = 2;
-        break;
-    }
-    card.style.transform = `rotateX(${ydeg * speed * 4}deg) rotateY(${
-      xdeg * speed * 4
-    }deg)`;
+  window.addEventListener("touchmove", function (event) {
+    currentX = event.touches[0].clientX;
+    currentY = event.touches[0].clientY;
+    let halfWidth = window.innerWidth / 2;
+    let halfHeight = window.innerHeight / 2;
+    const xdeg = (initialX - currentX - halfWidth) / halfWidth;
+    const ydeg = (initialY - currentY - halfHeight) / halfHeight;
+    let customRotateX;
+    let customRotateY;
+    updateReflection(ydeg * 180, xdeg * 100);
+    cards.forEach((card, index) => {
+      switch (index) {
+        //frame
+        case 3:
+          speed = 4;
+          customRotateX = -ydeg * speed;
+          customRotateY = xdeg * speed * 1.5;
+          break;
+        //shadow frame
+        case 2:
+          speed = 6;
+          customRotateX = -ydeg * speed;
+          customRotateY = xdeg * speed * 1.5;
+          break;
+        //character
+        case 1:
+          speed = 2;
+          customRotateX = ydeg * speed;
+          customRotateY = -xdeg * speed * 1.5;
+          break;
+        //bg
+        case 0:
+          speed = 2;
+          customRotateX = ydeg * speed * 1.5;
+          customRotateY = -xdeg * speed * 1.5;
+          break;
+      }
+
+      card.style.transform = `rotateX(${customRotateX}deg) rotateY(${customRotateY}deg)`;
+    });
   });
-}; */
+} else {
+  console.log("NOT MOBILE", isMobile);
+  window.addEventListener("mousemove", (event) => {
+    let mouseX = event.clientX;
+    let mouseY = event.clientY;
+    let halfWidth = window.innerWidth / 2;
+    let halfHeight = window.innerHeight / 2;
+    let xdeg = (mouseX - halfWidth) / halfWidth;
+    let ydeg = (mouseY - halfHeight) / halfHeight;
+    let speed = 2;
+    let customRotateX = ydeg * speed;
+    let customRotateY = xdeg * speed;
+    updateReflection(ydeg * 180 * 3, xdeg * 100 * 3);
+    cards.forEach((card, index) => {
+      switch (index) {
+        //frame
+        case 3:
+          speed = 2;
+          customRotateX = -ydeg * speed;
+          customRotateY = xdeg * speed;
+          break;
+        //shadow frame
+        case 2:
+          speed = 4;
+          customRotateX = -ydeg * speed;
+          customRotateY = xdeg * speed;
+          break;
+        //character
+        case 1:
+          speed = 1;
+          customRotateX = ydeg * speed;
+          customRotateY = -xdeg * speed;
+          break;
+        //bg
+        case 0:
+          speed = 1;
+          customRotateX = ydeg * speed;
+          customRotateY = -xdeg * speed;
+          break;
+      }
+      card.style.transform = `rotateX(${customRotateX}deg) rotateY(${customRotateY}deg)`;
+    });
+  });
+}
 
 function updateReflection(degree, percentage) {
   cards.forEach((card, index) => {
     if (index === 3) {
-      card.style.background = `linear-gradient(${degree}deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) ${percentage}%,rgba(255,255,255,0) 100%), url('${""}')`;
+      card.style.background = `linear-gradient(${degree}deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) ${percentage}%,rgba(255,255,255,0) 100%)`;
       card.style.backgroundSize = "cover";
     }
   });
