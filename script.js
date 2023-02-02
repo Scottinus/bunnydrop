@@ -39,7 +39,7 @@ if (isMobile) {
     const ydeg = (initialY - currentY - halfHeight) / halfHeight;
     let customRotateX;
     let customRotateY;
-    updateReflection(ydeg * 180 * 3, xdeg * 100 * 3);
+    updateReflection(ydeg * 180, xdeg * 100 * 2);
     cards.forEach((card, index) => {
       switch (index) {
         //frame
@@ -56,7 +56,7 @@ if (isMobile) {
           break;
         //character
         case 1:
-          speed = 2;
+          speed = 1;
           customRotateX = ydeg * speed;
           customRotateY = -xdeg * speed * 1.5;
           break;
@@ -68,7 +68,21 @@ if (isMobile) {
           break;
       }
 
-      card.style.transform = `rotateX(${customRotateX}deg) rotateY(${customRotateY}deg)`;
+      function handleRange(num, min, max) {
+        if (num < min) {
+          return min;
+        } else if (num > max) {
+          return max;
+        } else {
+          return num;
+        }
+      }
+
+      card.style.transform = `rotateX(${handleRange(
+        customRotateX,
+        -6,
+        6
+      )}deg) rotateY(${handleRange(customRotateY, -6, 6)}deg)`;
     });
   });
 } else {
