@@ -1,33 +1,194 @@
 body {
+  /*   background: #eee; */
   background: #1b1b1b;
-  background-size: cover;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
-  position: fixed;
-  width: 100%;
+  transition: all 1s ease-out;
 }
-.card {
-  height: 100%;
-  width: auto;
-  position: absolute;
-}
-
-/* @media only screen and (max-width: 700px) {
-  .card {
-    height: 180px;
-    width: 300px;
-    border-radius: 5px;
-  }
-} */
-
-/* ref https://blog.logrocket.com/the-noobs-guide-to-3d-transforms-with-css-7370aafd9edf/ */
-
-.scene {
-  perspective: 30em;
+/* make the page responsive */
+.container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+}
+
+/* center the two images */
+.image-container {
+  opacity: 0;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 1s ease-out;
+}
+
+/* apply the animation to the second image */
+.change-on-click {
+  animation: change-image 8s linear;
+}
+.text-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 0%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 70%;
+  height: fit-content;
+  width: 80%;
+  padding: 0.625rem;
+  border: 4px solid #f5799c;
+  border-radius: 8px;
+  background-color: rgba(254, 190, 195, 0.95);
+  transition: all 1s ease-in-out;
+}
+.text-container > p {
+  color: white;
+  font-family: "Barrio", cursive;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.text-container > .choice-box {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  margin-top: 0.625rem;
+  border: 4px dashed #f5799c;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  color: #f5799c;
+  font-family: "Barrio", cursive;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.5rem;
+}
+button:hover {
+  border: 4px dashed white;
+  background-color: #f5799c;
+  color: white;
+}
+img {
+  width: auto;
+  height: 100%;
+  cursor: pointer;
+}
+img.sleepy-gif {
+  width: 5rem;
+  height: 5rem;
+  z-index: 2;
+  position: absolute;
+  filter: invert(1);
+  top: 0%;
+  right: 0%;
+}
+.exclamation-gif {
+  width: 4rem;
+  height: 3rem;
+  z-index: 2;
+  position: absolute;
+  filter: brightness(0);
+  top: 0%;
+  right: 0%;
+}
+#wake-action,
+#regret-action,
+#knock-action,
+#apologize-action,
+#rested-action,
+#end-action,
+#omg-action {
+  display: none;
+  opacity: 0;
+}
+
+/* heartbeat animation */
+@keyframes heartbeat {
+  0% {
+    top: 46%;
+    opacity: 0.8;
+  }
+  25% {
+    top: 42%;
+    opacity: 0.6;
+  }
+  50% {
+    top: 38%;
+    opacity: 0.4;
+  }
+  75% {
+    top: 34%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 30%;
+    opacity: 0;
+  }
+}
+
+.heartbeat-box {
+  display: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  animation-name: heartbeat;
+  transition: all 0.2s ease-in-out;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  width: 12rem;
+  height: 12rem;
+}
+
+/* noises animation */
+@keyframes noises {
+  0% {
+    top: 46%;
+    opacity: 0.8;
+  }
+  25% {
+    top: 42%;
+    opacity: 0.6;
+  }
+  50% {
+    top: 38%;
+    opacity: 0.4;
+  }
+  75% {
+    top: 34%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 30%;
+    opacity: 0;
+  }
+}
+
+.noises-box {
+  display: none;
+  position: absolute;
+  animation-name: noises;
+  transition: all 0.2s ease-in-out;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  font-size: 2rem;
+  color: white;
+  font-family: "Barrio", cursive;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.noises-left {
+  animation-delay: 1s;
+  left: 30%;
+}
+.noises-right {
+  animation-delay: 0.6s;
+  left: 70%;
 }

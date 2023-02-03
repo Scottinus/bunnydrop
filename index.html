@@ -1,44 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Tilting Bunny</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barrio&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="scene">
-        <div class="card" id="card">
-            <img  id="layer3"
-            width="auto"
-            height="100%"
-            src="bunnydrop/bg3.png"
-            alt="Image 3"></img>
+    <div class="container">
+      <!-- Turn light action -->
+      <div class="text-container" id="light-action">
+        <p>another day is over. You went to sleep but woke up in the middle of the night for no reason. 
+          You get up to go to the kitchen to drink.</br>
+          It's all dark. Maybe You should turn on the light!</p>
+        <div class="choice-box">
+          <button onclick="turnOnLight()">Turn on the light</button>
+        </div>
+      </div>
+      <!-- After turnLight -->
+      <div class="text-container" id="knock-action">
+        <img class="sleepy-gif img-gif" src="./Bunnydrop//sleep.gif"/>
+        <p>You hear noises coming from behind the door...</br> Looks like someone is sleeping</p>
+        <div class="choice-box">
+          <button onclick="reset()">I will come back later.</button>
+          <button onclick="ActivateDoor()">*Knock Knock*</button>
+        </div>
+      </div>
+      <!-- After active door -->
+      <div class="text-container" id="wake-action">
+        <p>A young bunny girl was sleeping. You woke her up!</p>
+        <div class="choice-box">
+          <button onclick="apologize()">You apologize for disturbing her!</button>
+          <button onclick="comfortable()">That bed looks so comfortable...</button>
+        </div>
+      </div>
+      <!-- AFTER apologize -->
+<div class="text-container" id="apologize-action">
+        <p>"I thought you were a pervert! You look sleepy. Want to lay down here with me for a bit? Come in <3"</p>
+        <div class="choice-box">
+          <button onclick="openAllDoor()">Enter</button>
+          <button onclick="reset()">It doesn't seem like the case. Go away</button>
+        </div>
+      </div>
+      <!--  AFTER comfortable -->
+      <div class="text-container" id="regret-action">
+        <img class="exclamation-gif img-gif" src="./Bunnydrop/exclamation.gif"/>
+        <p>"Who are you? <br/> a pervert? out of here!"</p>
+
+        <div class="choice-box">
+          <button onclick="apologize()">I am sorry. I haven't slept in a while. The bed seemed comfortable to me</button>
+          <button onclick="reset()">Run away</button>
+        </div>
+      </div>
+      <!-- AFTER openAllDoor -->
+      <div class="text-container" id="rested-action">
+        <p>...*noises noises*...</p>
+        <div class="choice-box">
+          <button onclick="restedEnough()">You have rested enough!</button>
+        </div>
+      </div>
+      <!-- After NOISES -->
+      <div class="text-container" id="end-action">
+        <p>"Are you feeling rested enough? ~ </br>
+          Come here more often if you feel tired next time"</p>
+        <div class="choice-box">
+          <button onclick="repeat()">Actually I need to rest a little longer...</button>
+          <button onclick="reset()">Go away</button>
+        </div>
+      </div>
+          <!-- After Retry -->
+          <div class="text-container" id="omg-action">
+            <p>OH...MY...GOD!...</br>
+              It was amazing! </br>
+              How much energy do you have? Didn't you feel tired?!?
+              I hope to enjoy you again next time, but how about going to rest for real now?</p>
+            <div class="choice-box">
+              <button onclick="reset()">Go away satisfied!</button>
+            </div>
           </div>
-          <div class="card" id="card">
-            <img  id="layer3"
-            width="auto"
-            height="100%"
-            src="bunnydrop/char3.png"
-            alt="Image 3"></img>
-          </div>
-          <div class="card" id="card">
-            <img  id="layer4"
-            width="auto"
-            height="100%"
-            src="bunnydrop/shadowFrame.png"
-            alt="Image 4"></img>
-          </div>
-      <div class="card" id="card">
-        <img  id="layer3"
-        width="auto"
-        height="100%"
-        src="bunnydrop/frame3.png"
-        alt="Image 3"></img>
+      <!-- NOISES ANIMATION BOX -->
+      <div class="heartbeat-box">
+        <img src="./Bunnydrop/heart.png"/>
+      </div>
+<div class="noises-box noises-left">
+  <p>Noises</p>
+</div>
+<div class="noises-box noises-right">
+  <p>Noises</p>
+</div>
+      <!-- DOOR IMAGE CONTAINER -->
+      <div class="image-container">
+        <img  class="frames" src="./Bunnydrop/d1.png" />
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+
+    </script>
   </body>
 </html>
-
