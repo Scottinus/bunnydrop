@@ -29,6 +29,20 @@ let intervalId = null;
 let closeDoorIntervalId = null;
 let retryCounter = 0;
 
+document.querySelector("#turnLight").addEventListener("click", turnOnLight);
+document.querySelector("#reset").addEventListener("click", reset);
+document.querySelector("#activedoor").addEventListener("click", ActivateDoor);
+document.querySelector("#apologize").addEventListener("click", apologize);
+document.querySelector("#comfortable").addEventListener("click", comfortable);
+document.querySelector("#openalldoor").addEventListener("click", openAllDoor);
+document.querySelector("#reset2").addEventListener("click", reset);
+document.querySelector("#apologize2").addEventListener("click", apologize);
+document.querySelector("#reset3").addEventListener("click", reset);
+document.querySelector("#restedenough").addEventListener("click", restedEnough);
+document.querySelector("#repeat").addEventListener("click", repeat);
+document.querySelector("#reset4").addEventListener("click", reset);
+document.querySelector("#reset5").addEventListener("click", reset);
+
 function handleHalfAnimation() {
   doors.src = "./Bunnydrop/" + imageFirstOpenSources[currentImageIndex];
   currentImageIndex = (currentImageIndex + 1) % imageFirstOpenSources.length;

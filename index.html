@@ -11,7 +11,7 @@
           You get up to go to the kitchen to drink.</br>
           It's all dark. Maybe You should turn on the light!</p>
         <div class="choice-box">
-          <button onclick="turnOnLight()">Turn on the light</button>
+          <button id="turnLight">Turn on the light</button>
         </div>
       </div>
       <!-- After turnLight -->
@@ -19,24 +19,24 @@
         <img class="sleepy-gif img-gif" src="./Bunnydrop//sleep.gif"/>
         <p>You hear noises coming from behind the door...</br> Looks like someone is sleeping</p>
         <div class="choice-box">
-          <button onclick="reset()">I will come back later.</button>
-          <button onclick="ActivateDoor()">*Knock Knock*</button>
+          <button id="reset">I will come back later.</button>
+          <button  id="activedoor">*Knock Knock*</button>
         </div>
       </div>
       <!-- After active door -->
       <div class="text-container" id="wake-action">
         <p>A young bunny girl was sleeping. You woke her up!</p>
         <div class="choice-box">
-          <button onclick="apologize()">You apologize for disturbing her!</button>
-          <button onclick="comfortable()">That bed looks so comfortable...</button>
+          <button id="apologize">You apologize for disturbing her!</button>
+          <button id="comfortable">That bed looks so comfortable...</button>
         </div>
       </div>
       <!-- AFTER apologize -->
 <div class="text-container" id="apologize-action">
         <p>"I thought you were a pervert! You look sleepy. Want to lay down here with me for a bit? Come in <3"</p>
         <div class="choice-box">
-          <button onclick="openAllDoor()">Enter</button>
-          <button onclick="reset()">It doesn't seem like the case. Go away</button>
+          <button id="openalldoor" >Enter</button>
+          <button id="reset2">It doesn't seem like the case. Go away</button>
         </div>
       </div>
       <!--  AFTER comfortable -->
@@ -45,15 +45,15 @@
         <p>"Who are you? <br/> a pervert? out of here!"</p>
 
         <div class="choice-box">
-          <button onclick="apologize()">I am sorry. I haven't slept in a while. The bed seemed comfortable to me</button>
-          <button onclick="reset()">Run away</button>
+          <button id="apologize2">I am sorry. I haven't slept in a while. The bed seemed comfortable to me</button>
+          <button id="reset3">Run away</button>
         </div>
       </div>
       <!-- AFTER openAllDoor -->
       <div class="text-container" id="rested-action">
         <p>...*noises noises*...</p>
         <div class="choice-box">
-          <button onclick="restedEnough()">You have rested enough!</button>
+          <button id="restedenough">You have rested enough!</button>
         </div>
       </div>
       <!-- After NOISES -->
@@ -61,8 +61,8 @@
         <p>"Are you feeling rested enough? ~ </br>
           Come here more often if you feel tired next time"</p>
         <div class="choice-box">
-          <button onclick="repeat()">Actually I need to rest a little longer...</button>
-          <button onclick="reset()">Go away</button>
+          <button id="repeat">Actually I need to rest a little longer...</button>
+          <button id="reset4">Go away</button>
         </div>
       </div>
           <!-- After Retry -->
@@ -72,7 +72,7 @@
               How much energy do you have? Didn't you feel tired?!?
               I hope to enjoy you again next time, but how about going to rest for real now?</p>
             <div class="choice-box">
-              <button onclick="reset()">Go away satisfied!</button>
+              <button id="reset5">Go away satisfied!</button>
             </div>
           </div>
       <!-- NOISES ANIMATION BOX -->
@@ -90,8 +90,6 @@
         <img  class="frames" src="./Bunnydrop/d1.png" />
       </div>
     </div>
-    <script src="script.js">
-
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
