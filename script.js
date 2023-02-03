@@ -41,10 +41,9 @@ function handleSecondHalfAnimation() {
   currentImageIndex = (currentImageIndex + 1) % imageSecondSources.length;
   if (currentImageIndex === 0) {
     clearInterval(intervalId);
-    console.log("closing door");
     setTimeout(() => {
-      closeDoorIntervalId = setInterval(closeDoor, 250);
-    }, 1500);
+      closeDoorIntervalId = setInterval(closeDoor, 450);
+    }, 1000);
   }
 }
 
@@ -78,7 +77,7 @@ function openFullHalfDoor() {
 function ActivateDoor() {
   knockAction.style.display = "none";
   gif.style.display = "none";
-  intervalId = setInterval(handleHalfAnimation, 250);
+  intervalId = setInterval(handleHalfAnimation, 450);
   setTimeout(() => {
     wakeAction.style.display = "block";
     wakeAction.style.opacity = 1;
@@ -118,7 +117,7 @@ function openAllDoor() {
   regretAction.style.display = "none";
   apologizeAction.style.opacity = 0;
   apologizeAction.style.display = "none";
-  intervalId = setInterval(handleSecondHalfAnimation, 250);
+  intervalId = setInterval(handleSecondHalfAnimation, 450);
 }
 
 function restedEnough() {
@@ -130,7 +129,7 @@ function restedEnough() {
   });
   imageContainer.style.opacity = 1;
   body.style.background = "#eee";
-  intervalId = setInterval(openFullHalfDoor, 250);
+  intervalId = setInterval(openFullHalfDoor, 450);
   setTimeout(() => {
     console.log("RETRY COUNTER", retryCounter);
     if (retryCounter < 3) {
@@ -147,7 +146,7 @@ function repeat() {
   retryCounter = retryCounter + 1;
   endAction.style.opacity = 0;
   endAction.style.display = "none";
-  closeDoorIntervalId = setInterval(closeDoor, 250);
+  closeDoorIntervalId = setInterval(closeDoor, 450);
 }
 function reset() {
   turnLightAction.style.opacity = 1;
